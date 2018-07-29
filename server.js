@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3001;
 let app = express();
 // __dirname stores path to projects directory (node-web-server)
 app.set('view engine','hbs');
@@ -37,4 +38,6 @@ app.get('/about',(req,res) =>  {
   });
 });
 
-app.listen(3001);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
