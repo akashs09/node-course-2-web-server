@@ -7,11 +7,10 @@ let app = express();
 app.set('view engine','hbs');
 hbs.registerPartials(__dirname+'/views/partials');
 
-app.use((req,res,next) => {
-  res.render('maintenance.hbs');
-});
+
 // app.use to register middleware then call the fcn
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public/'));
+// app.use(express.static(__dirname+'/tic-tac-toe-v3/'));
 app.use((req,res,next) => {
   let now = new Date().toString();
   const log = (`${now}: ${req.method}, ${req.url}`);
@@ -37,6 +36,11 @@ app.get('/about',(req,res) =>  {
     pageTitle: 'About Page'
   });
 });
+// app.get('/tic-tac-toe-v3',(req,res) =>  {
+//   res.render('about.hbs', {
+//     pageTitle: 'About Page'
+//   });
+// });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
